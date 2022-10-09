@@ -26,15 +26,19 @@ if (localStorage.getItem('feedback-form-state')) {
 
 
   
-
-
-
 function onSubmit(evt) {
-    evt.preventDefault();
+  evt.preventDefault();
+  if (evt.currentTarget.email.value ==='' || evt.currentTarget.message.value ==='' ) {
+      alert('Заповніть всі поля');
+  } else {
     const storagedData = localStorage.getItem('feedback-form-state');
     const storagedlDataJSON = JSON.parse(storagedData);
     
-    form.reset();
+    
     console.log(storagedlDataJSON);
+    form.reset();
     localStorage.clear();
+  }
+
+    
 }
